@@ -1,0 +1,423 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "def factorial (k):\n",
+    "    if k > 0:\n",
+    "        return k * factorial(k - 1)\n",
+    "    else:\n",
+    "        return 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "def binomial (n, k):\n",
+    "    return factorial(n) / (factorial(k) * factorial(n - k))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def binomial_dist (n, p, k):\n",
+    "    return binomial(n, k) * (p ** k) * ((1 - p) ** (n - k))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.048812771400080654"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "p = 2/3\n",
+    "n = 300\n",
+    "k = 200\n",
+    "binomial_dist(n, p, k)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.1127323256409202e+57"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "binomial(300, 250)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "720"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "factorial(6)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "distribution = []\n",
+    "for i in range(301):\n",
+    "    distribution.append(binomial_dist(n, p, i))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "200"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "distribution.index(max(distribution))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.048812771400080654"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "massimo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "plt.plot(distribution)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "plt.plot([0,1,2])\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0.048812771400080654,\n",
+       " 0.04856992179112503,\n",
+       " 0.047608141161597776,\n",
+       " 0.04596648112154268,\n",
+       " 0.043713222243035685,\n",
+       " 0.04094116424713585,\n",
+       " 0.03776126799493112,\n",
+       " 0.03429525788911618,\n",
+       " 0.03066787484315196,\n",
+       " 0.02699946876143522,\n",
+       " 0.02339953959324385,\n",
+       " 0.019961692543999487,\n",
+       " 0.016760289022792023,\n",
+       " 0.013848877314607487,\n",
+       " 0.011260302115615435,\n",
+       " 0.009008241692492347,\n",
+       " 0.007089819850572677,\n",
+       " 0.005488892787540138,\n",
+       " 0.004179615608860837,\n",
+       " 0.003129940455950581,\n",
+       " 0.0023047743357454274,\n",
+       " 0.0016686149037070967,\n",
+       " 0.0011875727693050505,\n",
+       " 0.0008307683946707974,\n",
+       " 0.0005711532713361732,\n",
+       " 0.0003858457655248814,\n",
+       " 0.0002560923222510274,\n",
+       " 0.00016696768146763017,\n",
+       " 0.00010691790129067544,\n",
+       " 6.723221740549023e-05,\n",
+       " 4.150858639817223e-05,\n",
+       " 2.515671902919528e-05,\n",
+       " 1.4963910457021326e-05,\n",
+       " 8.73429966590086e-06,\n",
+       " 5.001692971071432e-06,\n",
+       " 2.8094615837507613e-06,\n",
+       " 1.5475847707101647e-06,\n",
+       " 8.35826374054435e-07,\n",
+       " 4.4249631567587726e-07,\n",
+       " 2.2957967842597813e-07,\n",
+       " 1.1670300319987219e-07,\n",
+       " 5.810937918665834e-08,\n",
+       " 2.8334325388535878e-08,\n",
+       " 1.3525850802757865e-08,\n",
+       " 6.3194548832557225e-09,\n",
+       " 2.8888936609169017e-09,\n",
+       " 1.2917817182961755e-09,\n",
+       " 5.648276339108782e-10,\n",
+       " 2.414182628812624e-10,\n",
+       " 1.0083333068133047e-10]"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "distribution[200 : 250]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "mean = 0\n",
+    "for i in range(0, 301):\n",
+    "    mean = mean + distribution[i] * i"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "area = 0\n",
+    "for i in range(250, 301):\n",
+    "    area = area + distribution[i]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(200.00000000000006, 6.771258537934222e-11)"
+      ]
+     },
+     "execution_count": 43,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mean, area"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def fact(x):\n",
+    "    if x == 1:\n",
+    "        return 1\n",
+    "    else:\n",
+    "        return x * fact(x-1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4.373869718414097e-13"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fact(100) / (50.5) ** 100"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.000833677872004"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "fact(100) / (np.sqrt(2 * np.pi * 100) * (100 / np.e) ** 100)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.5.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}
